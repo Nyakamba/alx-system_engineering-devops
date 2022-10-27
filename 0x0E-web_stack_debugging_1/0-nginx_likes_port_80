@@ -3,4 +3,4 @@
 #this is spam
 #this is spam
 sed -i 's/8080/80/g' /etc/nginx/sites-enabled/default
-service nginx restart
+sudo service nginx restart

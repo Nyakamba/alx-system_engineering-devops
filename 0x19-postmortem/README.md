@@ -1,16 +1,17 @@
+BooktifuL requests failure
+On all queries made on the platform routes, the BooktifuL platform was reportedly returning 500 Errors last week, and all of the services were unavailable. Ninety percent of users were impacted. The failure of our master server web-01 was the primary factor.
 
-BooktifuL requests failure report
-Last week, it was reported that the BooktifuL platform was returning 500 Error on all requests made on the platform routes, all the services were down. 90% of the users were affected. The root cause was the failure of our master server web-01.
 
 Timeline
-The error was realized on Saturday 26th February 1200 hours (East Africa Time) when our Site Reliability Engineer, Mr Elie saw the master server lagging in speed. Our engineers on call disconnected the master server web-01 for further system analysis and channelled all requests to client server web-02. They soled problem by Sunday 27th Febraury 2200 hours (East Africa Time).
+On Saturday, February 26, around 1200 (East African Time), our site reliability engineer, Mr. Elie, noticed a performance issue with the master server. For additional system examination, our on-call experts unplugged the master server web-01 and routed all requests to client server web-02. They resolved the issue by Sunday, February 27, 2200 hours (East Africa Time).
 
-Root cause and resolution
-The BooktifuL platform is served by 2 ubuntu cloud servers. The master server web-01 was connected to serve all requests, and it stopped functioning due to memory outage as a results of so many requests because during a previous test, the client server web-02 was disconnected temporarily for testing and was not connected to the load balancer afterwards.
+Cause and effect and remedy
+Two Ubuntu cloud servers provide service to the BooktifuL platform. The principal server web-02, the client server used in the previous test, had been briefly disconnected for testing and had not been reconnected to the load balancer, web-01 was connected to serve all requests but eventually ceased working owing to memory issues brought on by the sheer volume of requests.
 
-The issue was fixed when the master server was temporarily disconnected for memory clean-up then connected back to the loadbalancer and round-robin algorithm was configured so that both the master and client servers can handle equal amount of requests.
+The problem was resolved when the load balancer was restarted after the master server had been momentarily unplugged for memory cleanup, and the round-robin algorithm was set up so that both the master and client servers could handle an equal number of requests.
 
-Measures against such problem in future
-Choose the best loadbalancing algorithm for your programs
-Always keep an eye on your servers to ensure they are running properly
-Have extra back-up servers to prevent your program fro completely going offline during an 
+Future preventative measures against this issue
+Select the ideal load-balancing method for your programs.
+Continually monitor your servers to make sure they are functioning properly.
+Have additional backup servers to avoid your program from falling entirely offline in the event of an issue
+
